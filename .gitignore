@@ -1,0 +1,9 @@
+# Never commit credentials
+.credentials.json
+*.credentials.json
+accounts/
+*.json
+
+# OS cruft
+.DS_Store
+Thumbs.db
