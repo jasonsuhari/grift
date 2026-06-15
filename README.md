@@ -3,11 +3,41 @@
 A tiny, dependency-free shell utility for managing **multiple Claude Code accounts** on one machine. Save the credentials for each account into a numbered slot and switch between them with a single command — handy if you juggle a personal account, a work account, and a few API/Max plans.
 
 ```
+grift                  # open the interactive picker (TUI)
 claude-save            # save the currently logged-in account into the next slot
 claude-switch 2        # switch to slot 2
 claude-accounts        # list saved slots
 claude-delete          # delete a slot (interactive)
 ```
+
+## The picker
+
+Run `grift` for a full-screen card grid — each saved account is a card stamped with the Claude mascot, laid out 2×3 per page:
+
+```
+                       grift — Claude Code accounts
+
+      ╭──────────────╮   ┏━━━━━━━━━━━━━━┓   ╭──────────────╮
+      │   ██    ██   │   ┃   ██    ██   ┃   │   ██    ██   │
+      │ ████████████ │   ┃ ████████████ ┃   │ ████████████ │
+      │ ███  ██  ███ │   ┃ ███  ██  ███ ┃   │ ███  ██  ███ │
+      │ ████████████ │   ┃ ████████████ ┃   │ ████████████ │
+      │ ██        ██ │   ┃ ██        ██ ┃   │ ██        ██ │
+      │              │   ┃              ┃   │              │
+      │   Slot 001   │   ┃   Slot 002   ┃   │   Slot 003   │
+   ‹  │   ● ACTIVE   │   ┃    [max]     ┃   │    [pro]     │  ›
+      ╰──────────────╯   ┗━━━━━━━━━━━━━━┛   ╰──────────────╯
+        ... second row of cards ...
+
+   ↑↓←→ move    ⏎ switch    s save    d delete    q quit
+```
+
+- **Arrow keys** (or `hjkl`) move the selection; the highlighted card gets a heavy orange border.
+- **⏎** switches to the selected account, **s** saves the current login as a new slot, **d** deletes a slot.
+- The card matching your current login is marked **● ACTIVE**; the `[max]`/`[pro]` tag shows each account's plan.
+- With more than six accounts, the **‹ ›** arrows page through them.
+
+Switching swaps the credentials file — restart Claude Code (or start a new session) for it to take effect.
 
 ## How it works
 
